@@ -1,0 +1,274 @@
+{% extends 'base.html' %} {% block content %}
+
+<!--main blog post-->
+<div class="outer-wrapper" id="outer-wrapper">
+    <div class="box-width">
+        <div class="content-wrapper" id="content-wrapper">
+            <main class="main-wrapper box-shadow" id="main-wrapper" itemscope="itemscope" itemtype="http://schema.org/Blog" role="main">
+                <div class="clear"></div>
+                <div class="main section" id="main" name="Blog main posts">
+                    <div class="widget Blog" data-version="2" id="Blog1">
+                        <div class="blog-posts hfeed container item-post-wrapper" itemscope="" itemtype="http://schema.org/BlogPosting">
+                            <article class="blog-post hentry item-post">
+                                <div class="item-post-content">
+
+                                    <nav class='post-breadcrumb' id='post-breadcrumb'>
+                                        <a class='home home-main' href='/'>Home</a>
+                                        <em class='delimiter'></em>{% for i in post.categories.all|slice:"1" %}<a class='label' href="/search?q={{i.title}}">{{i.title}}</a>{% endfor %}
+                                        <em class='delimiter'></em><span class='current'>{{post.title}}</span>
+                                    </nav>
+                                    <div class="item-head">
+
+                                        <h1 class="item-title">{{post.title}}</h1>
+                                        <div class="item-meta">
+                                            <div>
+                                                <span class="author-img">
+                                                    <img src="{{post.author.author_profile_pic.url}}"/>
+                                                </span>
+                                                <span class="post-author-name" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person">
+                                                    by <span class="post-author-text"><b style="color:var(--main-color)">{{post.author.user.username}}</b></span>
+                                                </span>
+                                                <span class="meta-post-time-widget meta-post-time-wrapperpost-time">
+                                                    - <time class="published post-published-date" datetime="2020-07-22T00:18:00-07:00">{{post.posted_date}}</time>
+                                                </span>
+                                            </div>
+                                            <span><a href="#comments"><i class="fas fa-comments"></i></a></span>
+                                        </div>
+                                        <div class="item-img">
+                                            <a class="featured-img post-featured-thumb item-post-thumb" href="{% url 'post' post.id post.slug %}">
+                                                <img src="{{post.thumbnail.url}}" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="post-body entry-content" id="post-body" itemprop="" itemscope="itemscope" itemtype="https://schema.org/BlogPosting">' {{post.post_body|safe}}
+                                    </div>
+                                </div>
+                                <section class="post-footer">
+                                <div class="item-tag">
+                                    <div class="item-post-label-wrap label-wrapper">
+                                        <span class="post-tag"></span>
+
+                                        {% for i in post.categories.all %}
+                                        <a class="post-category index-post-label dim-dark index-post-label first-label index-post-label" href="/search?q={{i.title}}" rel="tag">
+                                            {{i.title}}
+                                        </a>
+                                        , {% endfor %}
+                                    </div>
+                                </div>
+                                <div class="post-share">
+                                    <span class="share-text"></span>
+                                    <ul class="custom-social-widget custom-social-widget-color post-share-menu">
+                                        <li class="facebook">
+                                            <a
+                                                class="facebook soft-dark"
+                                                href="https://www.facebook.com/sharer.php?u={{request.path}}"
+                                                onclick="window.open(this.href, &#39;windowName&#39;, &#39;width=550, height=650, left=24, top=24, scrollbars, resizable&#39;); return false;"
+                                                rel="nofollow"
+                                            ></a>
+                                        </li>
+                                        <li class="twitter">
+                                            <a
+                                                class="twitter soft-dark"
+                                                href="https://twitter.com/share?url={{request.path}}&text={{post.title}}"
+                                                onclick="window.open(this.href, &#39;windowName&#39;, &#39;width=550, height=450, left=24, top=24, scrollbars, resizable&#39;); return false;"
+                                                rel="nofollow"
+                                            ></a>
+                                        </li>
+                                        <li class="pinterest">
+                                            <a
+                                                class="pinterest soft-dark"
+                                                href='https://www.pinterest.com/pin/create/button/?url={{request.path}}"&media={{post.thumbnail.url}}&description={{post.title}}'
+                                                onclick="window.open(this.href, &#39;windowName&#39;, &#39;width=735, height=750, left=24, top=24, scrollbars, resizable&#39;); return false;"
+                                                rel="nofollow"
+                                            ></a>
+                                        </li>
+                                        <li class="linkedin">
+                                            <a
+                                                class="linkedin soft-dark"
+                                                href='https://www.linkedin.com/shareArticle?url={{request.path}}"'
+                                                onclick="window.open(this.href, &#39;windowName&#39;, &#39;width=550, height=650, left=24, top=24, scrollbars, resizable&#39;); return false;"
+                                                rel="nofollow"
+                                            ></a>
+                                        </li>
+                                        <li class="whatsapp whatsapp-mobile">
+                                            <a class="whatsapp soft-dark" href='https://api.whatsapp.com/send?text={{post.title}} | {{request.path}}"' rel="nofollow" target="_blank"></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="post-author">
+                                    <div class="author-img">
+                                        <img
+                                            alt="Admin"
+                                            class="author-avatar post-thumb author-image"
+                                          src="{{post.author.author_profile_pic.url}}"/>
+                                    </div>
+                                    <div class="post-author-about">
+                                        <h2 class="author-name">
+                                            <a alt="Admin" href="" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person" target="_blank">
+                                                {{post.author.user.username}}
+                                            </a>
+                                        </h2>
+                                        <p>
+                                            <span class="auth-text">{{post.author.author_description}}</span>
+                                        </p>
+                                        <div class="author-link">
+                                            <ul class="custom-social-widget">
+                                                <li class="facebook"><a href="{{post.author.author_facebook_url}}"></a></li>
+                                                <li class="twitter"><a href="{{post.author.author_twitter_url}}"></a></li>
+                                                <li class="instagram"><a href="{{post.author.author_instagram_url}}"></a></li>
+                                                <li class="github"><a href="{{post.author.author_github_url}}"></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <div class="comment" id="comments">
+                                    <div class="comment-title">
+                                        <h3>Comments</h3>
+                                    </div>
+                                    {% for i in comments %}
+                                    <div class="comment-item">
+                                        <div class="comment-name">
+                                            <span class="fas fa-user"></span> <span id="comment-user">{{i.name}}</span>
+                                        </div>
+                                        <div class="comment-msg">
+                                            <p>
+                                                {{i.message}}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                    <div class="comment-box">
+                                        <form action="{% url 'post' post.id post.slug %}" method="POST">
+                                            {% csrf_token %}
+                                            <input type="text" name='name' placeholder="Your Name.." required="required" />
+                                            <textarea type="text" name="message" placeholder="Comment.." required="required"></textarea>
+                                            <button type="submit">comment</button>
+                                        </form>
+                                    </div>
+                                </div>
+                                
+                                <div class="item-blog-pager">
+                                    {% if prevpage %}
+                                    <a href="{% url 'post' prevpage.id prevpage.slug %}" class="prev-page" title="Newer Posts">
+                                        {{prevpage}}
+                                    </a>
+                                    {% else %}
+                                   <a> Newest</a>
+                                    {% endif %}
+                                    {% if nextpage %}
+                                    <a href="{% url 'post' nextpage.id nextpage.slug %}" class="next-page" title="Older Posts">
+                                        {{nextpage}}
+                                    </a>
+                                    {% else %}
+                                    <a>No Post</a>
+                                    {% endif %}
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <aside class="sidebar-wrapper">
+                <div class="sidebar-bg">
+                <div class="sidebar">
+                    <div class="widget">
+                        <div class="sidebar-widget-title">
+                            <h3>Popular Post</h3>
+                        </div>
+                            <div class="wideget-content">
+                                {% for i in popular %}
+                                <div class="popular-post">
+                                    <div class="popular-thumb">
+                                        <img src="{{i.thumbnail.url}}"/>
+                                    </div>
+                                    <div class="popular-meta">
+                                        <div class="popular-title">
+                                            <h2><a href="{% url 'post' i.id i.slug %}">{{i.title}}</a></h2>
+                                        </div>
+                                        <div class="popular-tags">
+                                            {% for cat in i.categories.all %}
+                                            <span>{{cat.title}}</span>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+
+                        
+                    </div>
+                    <div class="widget">
+                        <div class="sidebar-widget-title">
+                            <h3>Popular category</h3>
+                        </div>
+                            <div class="wideget-content Label">
+                                <div class="cloud-cat cloud-label">
+                                    <ul>
+                                        {% for i in cats|slice:"10" %}
+                                        <li><a href="/search?q={{i.title}}">{{i.title}}</a></li>
+                                        {% endfor %}
+                                    </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="widget">
+                        <div class="sidebar-widget-title">
+                            <h3>Labels</h3>
+                        </div>
+                            <div class="wideget-content Label">
+                                <div class="cloud-cat list-label">
+                                    <ul>
+                                        {% for i in cats|slice:"10" %}
+                                        <li><a href="/search?q={{i.title}}">{{i.title}}</a></li>
+                                        {% endfor %}
+                                    </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="widget">
+                            <div class="wideget-content">
+                                <div class="sidebar-subscribe">
+                                    <div class="sidebar-sub-text">
+                                                                                <p>
+                                            Get all the latest updates right in your inbox , let's join now.
+                                        </p>
+                                    </div>
+                                    <form action="{% url 'post' post.id post.slug %}" method="POST">
+                                        {% csrf_token %}
+                                        <input type="text" name="email" placeholder="Enter your email.." required="required" />
+                                        <button type="submit">Subscribe Now</button>
+                                    </form>
+                                        {% for msg in messages %}
+                                        <div class="msg">
+
+                                        {{msg}}
+
+                                    </div>
+                                        {% endfor %}
+                                </div>
+
+                            </div>
+                        
+                    </div>
+                    <div class="widget">
+                        <div class="sidebar-widget-title">
+                            <h3>Contact Us</h3>
+                        </div>
+                            <div class="wideget-content">
+
+                            </div>
+                        </div>
+                    
+
+
+                    <!--widget ends-->
+
+                </div>
+            </div>
+            </aside>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

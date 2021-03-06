@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="error-page">
+	<div class="container">
+		<div class="error-content">
+			<div class="error-404">
+				<h1>404</h1>
+			</div>
+			<div class="error-text">
+				<p>
+					The page you are looking for does't exist here. Probably the author has removed it or you don't have permission to view it.
+				</p>
+			</div>
+			<div class="gotohome">
+				<a href="{% url 'homepage' %}">Goto Home</a>
+			</div>
+		</div>
+	</div>
+</div>
+<style type="text/css">
+	.header,footer,.homead,.widget-share-menu,.gotobottom,.gototop{
+		display: none;
+	}
+	.error-page {
+		display: flex;
+		justify-content: center;
+		text-align: center;
+		align-items: center;
+		flex-direction: column;
+		height: 100vh
+	}
+	.error-content {
+		width: 100%;
+		max-width: 600px;
+		padding: 40px 30px;
+		border-radius: 10px;
+		box-shadow: 0px 4px 40px 0px rgba(0,0,0,0.08);
+		height: auto;
+	}
+	.error-404 {
+		margin: 10px 0
+	}
+	.error-404 h1 {
+		font-size: 80px;
+		color:var(--main-color);
+		line-height: normal;
+	}
+	.error-text {
+		display: block;
+		position: relative;
+		margin: 20px 0
+	}
+	.error-text p {
+		line-height: 2em;
+		font-size: 18px;
+		color: #7a7a7a
+	}
+	.gotohome a {
+		background: var(--main-color);
+		color:var(--white-color);
+		height: 40px;
+		line-height: 40px;
+		text-align: center;
+		width: auto;
+		padding: 0 20px;
+		border-radius: 10px;
+		display: inline-block;
+	}
+
+
+
+</style>
+{% endblock %}

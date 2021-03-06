@@ -1,0 +1,308 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <include expiration="7d" path="*.css"></include>
+        <include expiration="7d" path="*.js"></include>
+        <include expiration="3d" path="*.gif"></include>
+        <include expiration="3d" path="*.jpeg"></include>
+        <include expiration="3d" path="*.jpg"></include>
+        <include expiration="3d" path="*.png"></include>
+        <include expiration="3d" path="*.ico"></include>
+        <meta content="sat, 02 jun 2021 00:00:00 GMT" http-equiv="expires" />
+        <link href="//1.bp.blogspot.com" rel="dns-prefetch" />
+        <link href="//2.bp.blogspot.com" rel="dns-prefetch" />
+        <link href="//3.bp.blogspot.com" rel="dns-prefetch" />
+        <link href="//4.bp.blogspot.com" rel="dns-prefetch" />
+        <link href="//www.blogger.com" rel="dns-prefetch" />
+        <link href="//dnjs.cloudflare.com" rel="dns-prefetch" />
+        <link href="//fonts.gstatic.com" rel="dns-prefetch" />
+        <link href="//pagead2.googlesyndication.com" rel="dns-prefetch" />
+        <link href="//www.googletagmanager.com" rel="dns-prefetch" />
+        <link href="//www.google-analytics.com" rel="dns-prefetch" />
+        <link href="//connect.facebook.net" rel="dns-prefetch" />
+        <link href="//c.disquscdn.com" rel="dns-prefetch" />
+        <link href="//disqus.com" rel="dns-prefetch" />
+        <link href="//use.fontawesome.com" rel="dns-prefetch" />
+        <link href="//cdnjs.cloudflare.com" rel="dns-prefetch" />
+        <link href="//cdn.jsdelivr.net" rel="dns-prefetch" />
+        <link href="https://mico-template.blogspot.com/" rel="dns-prefetch" />
+        <!-- ========*****========= HEAD META CONTENT AND TAGS ========*****========= -->
+        <meta content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" name="viewport" />
+        <!--head content-->
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+        <meta content="blogger" name="generator" />
+        <link href="https://mico-template.blogspot.com/favicon.ico" rel="icon" type="image/x-icon" />
+        <meta content="#ff5722" name="theme-color" />
+        <meta content="#0157d9" name="msapplication-navbutton-color" />
+        <!--canonical url-->
+        <link href="https://mico-template.blogspot.com/" rel="canonical" />
+        <!--blog type in dirrent pages-->
+        <meta content="website" property="og:type" />
+        <!--title in diffrent pages-->
+
+        <title>
+            {% if title %} {{ title }} {% else %} My blog {% endif %}
+        </title>
+
+        <!-- Font Awesome Free 5.0.10 -->
+        <link href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" rel="stylesheet" />
+          <link href='https://unpkg.com/swiper/swiper-bundle.min.css' rel='stylesheet'/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+    </head>
+    <!--ended the head-->
+    <!--body start-->
+    <body class="index" id="body" itemscope="" itemtype="http://schema.org/WebPage">
+        <div class="box-version box-shadow">
+        <header class="header" id="header">
+            <div class="header-wrapper" id="header-wrapper">
+                <div class="box-width">
+                    <div class="header-nav flex-justify">
+                        <div class="header-bar togglemenu">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <!--logo menu-->
+                        <div class="header-left flex-only">
+                            <div class="header-logo">
+                                <div class="main-logo section" id="main-logo" name="SITE LOGO">
+                                    <div class="widget Header" data-version="2" id="Header1">
+                                        <div class="logo-widget">
+                                            <h1 class="blog-title">
+                                                <a href="{% url 'homepage' %}">
+                                                    {% if logo %}
+                                                    <img src="{{logo.logo.url}}"/>
+                                                    {% else %}
+                                                    <span>Logo Here</span>
+                                                    {% endif %}
+                                                </a>
+                                            </h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--menu-->
+                        <div class="right-header">
+                        <div class="header-menu">
+                            <div class="sidenav-menu section" id="sidenav-menu" name="MAIN MENU ITEM">
+                                <div class="widget LinkList" data-version="2" id="LinkList6">
+                                    <div class="widget-content">
+                                        <nav id="ul-nav" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+                                            <ul>
+                                                <li>
+                                                    <a href="/">Home</a>
+                                                </li>
+                                                {% for i in menu %}
+                                                <li><a href="/{{i.menu_url}}">{{i.menu_name}}</a></li>
+                                                {% endfor %}
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--search bar-->
+                        <div class="search-form">
+                            <form action="{% url 'search' %}" method="GET">
+                                {% csrf_token %}
+                                <input type="text" name="q" placeholder="Seach.."/>
+                                <button type="submit"><i class="fas fa-search"></i></button>
+                            </form>
+                        </div>
+                        <!--search icon-->
+                        <div class="search-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+        <!--blocks--><!-- 
+<div class='header-block flex-center'>
+<div class='box-width'>
+<div class='block-item'>
+<div class='block-heading'>
+<p class='small-text'>Welcome , World</p>
+<h1>Unique mockups and graphics design templates for free..</h1>
+</div>
+<div class='block-footer'>
+<div class='search'>
+<form action='/search' class='flex-center' method='get'>
+<input name='q' placeholder='Mockups, Vectors etc..' type='text'/>
+<button class='flex-center' type='submit'><i class='fas fa-search'></i></button>
+</form>
+<span class='search-text'>Type and Hit enter</span>
+</div>
+</div>
+</div>
+</div>
+</div> -->
+
+        <!--item post block-->
+        <div class="box-width">
+        <div class="homead">
+            <div class="inad section" id="inad" name="Homepage Top ADS">
+                <div class="widget HTML" data-version="2" id="HTML2">
+                    <div class="widget-content">
+                        <a class="hor-ad">Responsive ads</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        {% block content %} 
+        {% endblock %}
+
+        <!--footer-->
+         <!--item post block-->
+         <div class="box-width">
+        <div class="homead">
+            <div class="inad section" id="inad" name="Homepage Top ADS">
+                <div class="widget HTML" data-version="2" id="HTML2">
+                    <div class="widget-content">
+                        <a class="hor-ad">Responsive ads</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- Footer Wrapper -->
+        <footer class='footer'>
+            <div class="box-width">
+                <div class='footer-wrapper'>
+                    <div class='footer-left'>
+                        <div class='flp section' id='flp' name='Footer Popular'><div class='widget PopularPosts' data-version='2' id='PopularPosts2'>
+                            <div>
+                                <h3 class='head-title'>
+                                Popular post</h3>
+                            </div>
+                            {% for i in popular|slice:"3" %}
+                                <div class='footer-popular'>
+                                    <a class='footer-popular-thumb'>
+                                        <img src="{{i.thumbnail.url}}"/>
+                                    </a>
+                                    <div class='footer-popular-head'>
+                                        <h2 class='footer-popular-post-title'>
+                                            <a href="{% url 'post' i.id i.slug %}">{{i.title}}</a>
+                                        </h2>
+                                        <div class='footer-popular-post-meta'>
+                                            <span class='footer-popular-post-author meta-author'>
+                                                <em><!--Can't find substitution for tag [allBylineItems.author.label]--></em>HycoLim
+                                            </span>
+                                            <span class='footer-popular-post-date published meta-time' datetime='2020-07-22T00:13:00-07:00'>July 22, 2020</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class='footer-mid'>
+                        <div class='label-item'>
+                            <div class='lb section' id='lb' name='Category'><div class='widget Label' data-version='2' id='Label3'>
+                                <div>
+                                    <h3 class='head-title'>
+                                    Category</h3>
+                                </div>
+                                <div class='widget-content cloud-label'>
+                                    <ul cloud='cloud-label'>
+                                        {% for i in cat|slice:"9" %}
+                                        <li>
+                                            <a class='cloud-label-name' href='/search?q={{i.title}}' rel='tag'>
+                                                {{i.title}}
+                                            </a>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div></div>
+                        </div>
+                    </div>
+                    <div class='footer-right'>
+                        <div class='footer-text section' id='footer-text' name='Footer About, Logo, Description'><div class='widget Text' data-version='2' id='Text1'>
+                            <div>
+                                <h3 class='head-title'>
+                                About</h3>
+                            </div>
+                            <div class='widget-content'>
+                                <div class='ftlogo'></div>
+                                <p class='footer-text'>
+                                    This website in build on Django and this includes basic features such as commenting , single post, sidebar , subscribe etc..
+                                </p>
+                                <div class="footer-social">
+                                    <ul class="custom-social-widget">
+                                        {% for i in footersocial %}
+                                        <li class="{{i.social_name}}">
+                                            <a href="{{i.social_url}}" title="{{i.social_name}}"></a>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div></div>
+                    </div>
+                </div>
+            </div>
+            <div class='credit'>
+                <div class="box-width">
+                    <div class='copyright'>
+                        <!--footer credits-->
+                        <div class='No-edit-credit section' id='copyright-credit' name='No Edit Credit'><div class='widget Text' data-version='2' id='Text4'>
+                            <p class='credit-text'>&#169; Copyright @<a href='/'>TechBoostMag</a> - <span id='year'></span>. All right reserved.</p>
+                        </div></div>
+                        <div class='footer-text-section section' name='Footer text'><div class='widget LinkList' data-version='2' id='LinkList1'>
+                            <div class='widget-content'>
+                                <div class="made-on">
+                                    Made by <i class="fas fa-heart"></i> and Django.
+                                </div>
+                            </div>
+                        </div></div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+        <a class="gototop" href="#body"></a>
+        <a class="gotobottom" href="#footer"></a>
+        <!--share widget by buddhalimbu.github.io-->
+       <!--  <div class="widget-share-menu">
+            <ul class="custom-social-widget share-link-menu custom-social-widget-color">
+                <li class="facebook"><a href="javascript:void(0)"></a></li>
+                <li class="twitter"><a href="javascript:void(0)"></a></li>
+                <li class="pinterest"><a href="javascript:void(0)"></a></li>
+                <li class="linkedin"><a href="javascript:void(0)"></a></li>
+                <li class="whatsapp"><a href="javascript:void(0)"></a></li>
+            </ul>
+        </div> -->
+        <!--end of the main post-->
+        <!-- jquery Plugins -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ <script src='https://unpkg.com/swiper/swiper-bundle.min.js'></script>
+        <script src="{% static 'js/app.js' %}"></script>
+        <script type="text/javascript">
+             var swiper = new Swiper(".swiper-container", {
+                                            slidesPerView: 1,
+                                            spaceBetween: 0,
+                                            loop: true,
+                                            centeredSlides: false,
+                                            freeMode: true,
+                                            grabCursor: true,
+                                            // init: false,
+                                            pagination: {
+                                                el: ".swiper-pagination",
+                                                clickable: true,
+                                            },
+                                            autoplay: {
+                                                delay: 4000,
+                                                disableOnInteraction: false,
+                                            },
+                                        });
+
+        </script>
+</body>
+</html>

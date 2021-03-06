@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="outer-wrapper">
+	<div class="box-width">
+		<div class="post-creator box-shadow">
+			<div class="heading">
+				<h3> Creating Post</h3>
+			</div>
+			<div class="rich-editor">
+				<form enctype="multipart/form-data" action="{% url 'createpost' %}" method="POST">
+					{% csrf_token %}
+
+					{{ form.as_p }}
+					{% if form.errors %}
+					<div style="background: red;color: #fff;padding: 20px">
+						{{form.errors}}
+					</div>
+					{% endif %}
+					<button type="submit">Publish Post</button>
+				</form>
+
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

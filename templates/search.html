@@ -1,0 +1,118 @@
+{% extends 'base.html' %} {% block content %}
+
+<!--main blog post-->
+<div class="outer-wrapper" id="outer-wrapper">
+    <div class="box-width">
+        <div class="content-wrapper" id="content-wrapper">
+            <main class="main-wrapper dim-dark" id="main-wrapper" itemscope="itemscope" itemtype="http://schema.org/Blog" role="main">
+                <div class="clear"></div>
+                <div class="main section" id="main" name="Blog main posts">
+                    <div class="widget Blog" data-version="2" id="Blog1">
+                        {% if posts %}
+
+                        <div class="index-heading">
+                            <span class="blog-info">Search Items</span>
+                            <h2>Search results for <span style="color: var(--main-color)">{{query}}</span></h2>
+                        </div>
+                        {% else %}
+                         <div class="index-heading">
+                            <span class="blog-info">Not Search Items</span>
+                            <h2>No Search results found for <span style="color: var(--main-color)">{{query}}</span></h2>
+                        </div>
+                        {% endif %}
+                        <div class="clearfix"></div>
+                        <div class="blog-posts hfeed container index-post-wrapper" itemscope="" itemtype="http://schema.org/BlogPosting">
+                            {% if posts %}
+                            {% for post in posts %}
+
+                            <article class="blog-post hentry index-post blog-post-11">
+                                <div class="index-image">
+                                    <a class="featured-img post-featured-thumb index-post-thumb" href="{% url 'post' post.id post.slug %}">
+                                        <img src="{{post.thumbnail.url}}" title="Blogging is the place to work without invest" />
+                                    </a>
+                                </div>
+                                <div class="index-head box-shadow">
+                                    <div class="rating flex-justify">
+                                        
+                                        <div class="index-label">
+                                            {% for i in post.categories.all %}
+                                            <a class="post-category index-post-label dim-dark index-post-label first-label index-post-label" href="/search/label/blogging?&max-results=6" rel="tag">
+                                                {{i.title}}
+                                            </a>
+                                            , {% endfor %}
+                                        </div>
+                                    </div>
+                                    <div class="index-meta">
+                                        <h2 class="index-title">
+                                            <a class="index-title-link" href="{% url 'post' post.id post.slug %}" rel="bookmark">{{post.title}}</a>
+                                        </h2>
+                                        <div class="post-snippet">
+                                            <p>{{post.post_body|striptags|truncatewords:10| safe}}</p>
+                                            <div class="flex-justify">
+                                                <div class="index-at">
+                                                    <span class="post-author-name" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person">
+                                                        <span class="post-author-text meta-author">{{post.author.user.username}}</span>
+                                                    </span>
+                                                    <span class="meta-post-time-widget meta-post-time-wrapperpost-time meta-time">
+                                                        <time class="published post-published-date" datetime="2019-04-18T09:13:00-07:00">{{post.posted_date}}</time>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                            {% endfor %}
+                            {% else %}
+                            <center>
+                            <div class="blog-post hentry index-post">
+                                <p>No matching content founds with you results</p>
+                                <a class="gotohome" href="{% url 'homepage' %}">Goto Homepage</a>
+                            </div>
+                        </center>
+                            {% endif %}
+                        </div>
+                        <div class="blog-pager" id="blog-pager">
+                             <ul>
+                                <li>
+                                    <a>Showing</a>
+                                </li>
+                                {% if posts.has_previous %}
+                                <li class="prev-page">
+                                    <a href="?{% if query %}q={{query}}&{% endif %}?page={{posts.previous_page_number}}" class="prev-link">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </a>
+                                </li>
+
+                                {% endif %}
+
+                                <li class="current-page">
+                                    <a href="?{% if query %}q={{query}}&{% endif %}?page={{posts.number}}" class="prev-link">1
+                                    </a>
+                                </li>  
+                                <li class="">
+                                    <a href="?{% if query %}q={{query}}&{% endif %}page=2" class="prev-link">2
+                                    </a>
+                                </li>  
+                                <li class="">
+                                    <a href="?{% if query %}q={{query}}&{% endif %}page=3" class="prev-link">3
+                                    </a>
+                                </li>    
+                                {% if posts.has_next %}                             
+                                <li class="next-page">
+                                    <a href="?{% if query %}q={{query}}&{% endif %}page={{posts.next_page_number}}" class="prev-link">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </a>
+                                </li>
+                                {% endif %}
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
